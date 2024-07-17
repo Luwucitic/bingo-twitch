@@ -27,12 +27,13 @@ class Bingo():
         temp = []
         i = 0
         for item in items[:self.size*self.size - 1]:
+            i += 1
             temp.append(item)
-            if (i == self.size - 1):
+            if (i == self.size):
                 board.append(temp)
                 temp = []
                 i=0
-            i += 1
+            
         return board
     
 

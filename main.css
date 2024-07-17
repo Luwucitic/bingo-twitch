@@ -1,0 +1,43 @@
+.flex-grid {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 375px;
+    padding: 15px;
+    background: #d54f34;
+    border-radius: 20px;
+    border: 1px solid;
+    font-size: 1.4em;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+        
+  }
+.flex-row, .flex-header {
+    position: relative;
+    flex-direction: row;
+    display: flex;
+  }
+
+.flex-cell {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 105px;
+    height: 105px;
+    padding: 5px;
+    border: 2px solid #d54f34;
+    background: white;
+    cursor: pointer;
+    user-select: none;
+  }
+.X {
+    opacity: .5;
+    background-image: url(./images.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    
+
+  }
