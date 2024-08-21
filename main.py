@@ -44,12 +44,15 @@ bingo = Bingo()
 items = list(range(36))
 bingo.addItems(items)
 
+def clearCard():
+    grid = document.querySelector(".flex-grid")
+    grid.innerHTML = ""
 
 def genCard(event):
+    clearCard()
     board = bingo.generateBoard()
     #need to display the board for the user
     grid = document.querySelector(".flex-grid")
-    print(grid)
     for side in board:
         row = document.createElement("div")
         row.setAttribute("class","flex-row")

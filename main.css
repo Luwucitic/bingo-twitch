@@ -4,12 +4,13 @@
     flex-direction: column;
     width: 375px;
     padding: 15px;
-    background: #d54f34;
+    background: #2d2d2d;
     border-radius: 20px;
     border: 1px solid;
     font-size: 1.4em;
     font-weight: 700;
     font-family: 'Roboto', sans-serif;
+    color: gold;
         
   }
 .flex-row, .flex-header {
@@ -27,17 +28,20 @@
     width: 105px;
     height: 105px;
     padding: 5px;
-    border: 2px solid #d54f34;
-    background: white;
+    border: 2px solid #2d2d2d;
+    background: gold;
     cursor: pointer;
     user-select: none;
+    color: black;
   }
 .X {
-    opacity: .5;
-    background-image: url(./images.png);
+    opacity: 1.0;
+    background-image: url(./Transparent_X.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
+    color:white;
     
 
   }
+  
