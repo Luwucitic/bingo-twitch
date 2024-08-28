@@ -1,6 +1,23 @@
 from pyscript import document
 
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
 import random
+
+url = "https://docs.google.com/spreadsheets/d//edit?gid=0#gid=0"
+column = ""
+
+GKEY = "1G-zaXRrLhcOsaVAt31C2IQNQUYxbm12E0ZVXtasZj2c"
+SHEET = 'Bingo Spreadsheet'
+
+url=f'https://docs.google.com/spreadsheet/ccc?key={GKEY}&output=xlsx'
+data = pd.read_excel(url,sheet_name=SHEET)
+print(data)
+URL = url 
+
+data = pd.read_csv(URL)
+#data = pd.read_csv("test-sheet.csv")
 
 class Bingo():
 
@@ -38,11 +55,29 @@ class Bingo():
             
         return board
     
-    
+    #converts CSV file  with column of items into a set
+    def convertCSV(self, column):
+        return set(data.loc[column])
+
+def fillDrop():
+    document.querySelector("dropdown-content")
+    for name in data.keys():
+        btn = document.createElement("button")
+        btn.setAttribute("pyclick", "switchCol")
+        btn.setAttribute("id", name)   
 
 bingo = Bingo()
-items = list(range(36))
-bingo.addItems(items)
+fillDrop()
+items = bingo.convertCSV(column)
+
+
+
+def switchCol(event):
+    global column
+    col = event.target.id
+    column = col
+    global items 
+    items = bingo.convertCSV(column)
 
 def clearCard():
     grid = document.querySelector(".flex-grid")
@@ -50,6 +85,7 @@ def clearCard():
 
 def genCard(event):
     clearCard()
+    bingo.addItems(items)
     board = bingo.generateBoard()
     #need to display the board for the user
     grid = document.querySelector(".flex-grid")
