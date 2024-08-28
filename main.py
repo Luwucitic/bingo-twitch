@@ -1,13 +1,10 @@
 from pyscript import document
 
 import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
 import random
+import os
 
-url = "https://docs.google.com/spreadsheets/d//edit?gid=0#gid=0"
 column = ""
-
 GKEY = "1G-zaXRrLhcOsaVAt31C2IQNQUYxbm12E0ZVXtasZj2c"
 SHEET = 'Bingo Spreadsheet'
 
