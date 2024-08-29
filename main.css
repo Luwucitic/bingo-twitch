@@ -1,4 +1,9 @@
+div {
+    font-family: 'Roboto', sans-serif;
+    border: none;
+}
 .flex-grid {
+    margin: auto;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -41,7 +46,45 @@
     background-repeat: no-repeat;
     background-position: 50% 50%;
     color:white;
-    
-
   }
-  
+button {
+    background: gold;
+    color: #2d2d2d;
+    display: flex;
+    width: auto;
+    font-size: 1em;
+    padding: 1vw;
+    font-weight: 700;
+}
+h1 button {
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    align-items: center;
+}
+button:focus {
+    background: rgb(168, 165, 144);
+    color: #2d2d2d;
+    justify-content: center;
+}
+.drp-con {
+    display: flex;
+    width: auto;
+    text-wrap: nowrap;
+    justify-content: center;
+}
+.text .drp-con {
+    align-content: center;
+    padding: 1vw;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+}
+#gen {
+    width: fit-content;
+    margin: auto;
+}
+.py-error {
+  display: none !important;
+}

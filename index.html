@@ -12,23 +12,15 @@
     <body>
 
         <div class="container" id = "first">
-            <div class="dropdown">
-                <button class="dropbtn">Dropdown</button>
-                <div class="dropdown-content">
-                </div>
-              </div>
-            <button py-click="genCard">Generate Bingo Card</button>
-        </div>
-        <div class="flex-grid">
-            <div class="flex-header">
-                peepeepoopoo
-                </div>
+            <div class="drpdwn">
+                <h1 class="drp-con">
+                    <div class="text" style="align-content: center;">Select Game: </div>
+                </h1>
             </div>
-            <div class="flex-row">
-                <div class="flex-cell">poopooopeepee
-                </div>
-            </div>
+            <button id="gen" py-click="genCard">Generate Bingo Card</button>
+            <div class="flex-grid">Pick a game and press generate</div>
         </div>
+        
         <script type="py" src="main.py" config="pyscript.json"></script>
     </body>
 

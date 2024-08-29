@@ -1,19 +1,21 @@
 from pyscript import document
 
+from pyodide.http import open_url
 import pandas as pd
 import random
-import os
+
 
 column = ""
-GKEY = "1G-zaXRrLhcOsaVAt31C2IQNQUYxbm12E0ZVXtasZj2c"
+GKEY = '1G-zaXRrLhcOsaVAt31C2IQNQUYxbm12E0ZVXtasZj2c'
 SHEET = 'Bingo Spreadsheet'
 
-url=f'https://docs.google.com/spreadsheet/ccc?key={GKEY}&output=xlsx'
-data = pd.read_excel(url,sheet_name=SHEET)
-print(data)
+url=f'https://docs.google.com/spreadsheet/ccc?key={GKEY}&output=csv'
+print(url)
+data = pd.read_csv(open_url(url))
+
 URL = url 
 
-data = pd.read_csv(URL)
+#data = pd.read_csv(URL)
 #data = pd.read_csv("test-sheet.csv")
 
 class Bingo():
@@ -53,39 +55,45 @@ class Bingo():
         return board
     
     #converts CSV file  with column of items into a set
-    def convertCSV(self, column):
-        return set(data.loc[column])
+    def convertCSV(self, data, column):
+        return set(data[column].dropna())
 
 def fillDrop():
-    document.querySelector("dropdown-content")
-    for name in data.keys():
+    global column
+    drp = document.querySelector(".drp-con")
+    for name in data.columns:
+        print(name)
         btn = document.createElement("button")
-        btn.setAttribute("pyclick", "switchCol")
-        btn.setAttribute("id", name)   
+        btn.setAttribute("class", "drp-item")
+        btn.setAttribute("py-click", "switchCol")
+        btn.setAttribute("id", name) 
+        btn.innerHTML = name
+        drp.append(btn)  
+        column = name
 
 bingo = Bingo()
 fillDrop()
-items = bingo.convertCSV(column)
-
+bingo.all_items = bingo.convertCSV(data, column)
 
 
 def switchCol(event):
+    global bingo
     global column
+    print(event.target.id)
     col = event.target.id
     column = col
-    global items 
-    items = bingo.convertCSV(column)
+    bingo.all_items = bingo.convertCSV(data, column)
 
 def clearCard():
     grid = document.querySelector(".flex-grid")
     grid.innerHTML = ""
 
 def genCard(event):
-    clearCard()
-    bingo.addItems(items)
+    bingo.addItems(bingo.all_items)
     board = bingo.generateBoard()
     #need to display the board for the user
     grid = document.querySelector(".flex-grid")
+    clearCard()
     for side in board:
         row = document.createElement("div")
         row.setAttribute("class","flex-row")
